@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" class="d-grid h-100">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome To Scramble</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <script src="https://unpkg.com/vue@next"></script>
+  <style>
+    .grid-column-1 {
+      grid-column: 1;
+    }
+
+    .grid-row-1 {
+      grid-row: 1;
+    }
+  </style>
+</head>
+<body class="d-grid h-100">
+  <div id="app" class="container">
+    <div class="row mb-5">
+      <div class="col col-12">
+        <h1 class="display-4 mb-5 text-center my-3">
+          {{title}}
+        </h1>
+      </div>
+      <div class="col col-6">
+        <h2 class="text-center">
+          {{this.game.points}}<br>
+         Points
+        </h2>
+      </div>
+      <div class="col col-6">
+        <h2 class="text-center">
+          {{this.game.strikes}}<br>
+          Strikes
+        </h2>
+      </div>
+    </div>
+
+      <div class="col col-6 offset-3 grid-column-1 grid-row-1">
+        <div class="alert" :class="cls" v-if="this.game.message">{{this.game.message}}</div>
+        <div class="row d-grid">
+          <div class="col col-6 offset-3  text-center grid-column-1 grid-row-1">
+            <h3>{{scrambled.toUpperCase()}}</h3>
+          </div>
+        <form v-on:submit.prevent="verifyGuess">
+          <input type="text" class="form-control mb-3" v-model="game.guess"  :disabled="this.game.lose || this.game.win" >
+        </form>
+      </div>
+        
+      <div class="row d-grid">
+        <div class="col col-6 offset-3 text-center grid-column-1 grid-row-1">
+          <button class="btn btn-danger" v-on:click="pass">{{this.game.passes}}Pass</button>
+        </div>
+          <div class="col col-6 offset-3 p-3  text-center grid-column-1 grid-row-2">
+            <button class="btn btn-outline-primary" type="reset" v-on:click="resetGame" v-show="this.game.win || this.game.lose" >Play Again</button>
+        </div>
+      </div>  
+  <script src="scramble.js"></script>
+</body>
+</html>
