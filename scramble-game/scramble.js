@@ -1,16 +1,3 @@
-/**********************************************
- * STARTER CODE
- **********************************************/
-
-/**
- * shuffle()
- * Shuffle the contents of an array
- *   depending the datatype of the source
- * Makes a copy. Does NOT shuffle the original.
- * Based on Steve Griffith's array shuffle prototype
- * @Parameters: Array or string
- * @Return: Scrambled Array or string, based on the provided parameter
- */
 function shuffle (src) {
   const copy = [...src]
 
@@ -29,11 +16,6 @@ function shuffle (src) {
 
   return copy
 }
-
-/**********************************************
- * YOUR CODE BELOW
- **********************************************/
-
  const app = Vue.createApp({
   data: function () {
     return {
